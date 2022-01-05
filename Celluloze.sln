@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celluloze.Engine", "Celluloze.Engine\Celluloze.Engine.csproj", "{3C376FA8-19F9-4D4F-83D9-01D8D5818AD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{FD8A9CC3-013D-4F61-A32F-DC066E746D46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD8A9CC3-013D-4F61-A32F-DC066E746D46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD8A9CC3-013D-4F61-A32F-DC066E746D46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C376FA8-19F9-4D4F-83D9-01D8D5818AD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C376FA8-19F9-4D4F-83D9-01D8D5818AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C376FA8-19F9-4D4F-83D9-01D8D5818AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C376FA8-19F9-4D4F-83D9-01D8D5818AD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
