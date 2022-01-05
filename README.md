@@ -14,7 +14,7 @@ Project is a part of 2022 [#csharpchallenge](https://twitter.com/hashtag/csharpc
 
 ## Roadmap
 
-1. Create and render static patterns in console application
+1. ~~Create and render static patterns in console application~~
 1. Add `Game Of Life` rules support
 1. Add mechanism to define own rulesets
 1. Add GUI
