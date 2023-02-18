@@ -1,3 +1,5 @@
-﻿namespace Celluloze.Runner;
+﻿using Spectre.Console;
 
-internal record CellRenderer(string State, ConsoleColor Color, char Character = '█');
+namespace Celluloze.Runner;
+
+internal record CellRenderer(string State, Color Color, char Character = '█');

@@ -11,14 +11,17 @@ namespace Celluloze.Engine.Factories
     {
         public static Board EmptyBoard(int width, int height)
         {
-            var rows = new List<Cell[]>();
+            var board = new Cell[width, height];
+
             for(var i = 0; i < height; i++)
             {
-                var row = Enumerable.Repeat(new Cell("EMPTY", 0), width).ToArray();
-                rows.Add(row);
+                for(var j = 0; j < width; j++)
+                {
+                    board[j, i] = new Cell("EMPTY", 0);
+                }
             }
 
-            return new Board(rows.ToArray());
+            return new Board(board);
         }
 
         public static Board StripesBoard(int width, int height)
