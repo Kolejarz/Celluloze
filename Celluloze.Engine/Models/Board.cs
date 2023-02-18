@@ -4,19 +4,19 @@ namespace Celluloze.Engine.Models;
 
 public class Board
 {
-    private readonly Cell[][] _cells;
+    private readonly Cell[,] _cells;
 
-    public Board(Cell[][] cells)
+    public Board(Cell[,] cells)
     {
         _cells = cells;
-        Size = new Size { Height = cells.Length, Width = cells[0].Length };
+        Size = new Size { Height = cells.GetLength(1), Width = cells.GetLength(0) };
     }
 
     public Size Size { get; }
 
     public Cell this[int x, int y]
     {
-        get => _cells[y][x]; 
-        set => _cells[y][x] = value;
+        get => _cells[x,y]; 
+        set => _cells[x,y] = value;
     }
 }
