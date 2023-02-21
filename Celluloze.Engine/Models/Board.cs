@@ -16,7 +16,7 @@ public class Board
 
     public Cell this[int x, int y]
     {
-        get => _cells[x,y]; 
-        set => _cells[x,y] = value;
+        get => _cells[x, y];
+        set => _cells[x, y] = value;
     }
 }

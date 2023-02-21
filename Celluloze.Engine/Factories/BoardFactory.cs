@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Celluloze.Engine.Models;
+﻿using Celluloze.Engine.Models;
+using Celluloze.Engine.Models.CellStateAttributes;
 
 namespace Celluloze.Engine.Factories
 {
@@ -13,11 +9,11 @@ namespace Celluloze.Engine.Factories
         {
             var board = new Cell[width, height];
 
-            for(var i = 0; i < height; i++)
+            for(var x = 0; x < width; x++)
             {
-                for(var j = 0; j < width; j++)
+                for(var y = 0; y < height; y++)
                 {
-                    board[j, i] = new Cell("EMPTY", 0);
+                    board[x, y] = new Cell(x, y);
                 }
             }
 
@@ -27,13 +23,14 @@ namespace Celluloze.Engine.Factories
         public static Board StripesBoard(int width, int height)
         {
             var board = EmptyBoard(width, height);
-            for (var rowIndex = 0; rowIndex < height; rowIndex++)
+
+            for(var y = 0; y < height; y++)
             {
-                for (var columnIndex = 0; columnIndex < width; columnIndex++)
+                for(var x = 0; x < width; x++)
                 {
-                    if ((rowIndex + columnIndex) % 3 == 0)
+                    if(x + y % 3 == 0)
                     {
-                        board[columnIndex, rowIndex] = new Cell("OCCUPIED", 0);
+                        board[x, y].CellState.Add(new BooleanCellStateAttribute("STRIPE", true), 0);
                     }
                 }
             }
@@ -41,18 +38,19 @@ namespace Celluloze.Engine.Factories
             return board;
         }
 
-        public static Board RandomBoard(int width, int height, double fillThreshold = 0.66)
+        public static Board RandomBoard(int width, int height, IComparableStateAttribute[] cellState, double fillThreshold = 0.66)
         {
             var random = new Random();
 
             var board = EmptyBoard(width, height);
-            for (var rowIndex = 0; rowIndex < height; rowIndex++)
+
+            for (var y = 0; y < height; y++)
             {
-                for (var columnIndex = 0; columnIndex < width; columnIndex++)
+                for (var x = 0; x < width; x++)
                 {
                     if (random.NextDouble() > fillThreshold)
                     {
-                        board[columnIndex, rowIndex] = new Cell("OCCUPIED", 0);
+                        board[x, y].UpdateState(cellState);
                     }
                 }
             }
