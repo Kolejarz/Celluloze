@@ -1,17 +1,18 @@
-﻿using Celluloze.Engine.Models;
+﻿using Celluloze.Engine;
+using Celluloze.Engine.Models;
 using Spectre.Console;
 
 namespace Celluloze.Runner;
 
 internal class ConsoleRenderer
 {
-    private readonly Dictionary<string, CellRenderer> _cellRenderers = new();
-    private readonly HashSet<string> _missingRenderers = new();
+    private readonly Dictionary<IComparableStateAttribute, CellRenderer> _cellRenderers = new();
     private readonly CellRenderer _defaultCellRenderer;
 
     public ConsoleRenderer(params CellRenderer[] cellRenderers)
     {
-        _defaultCellRenderer = new CellRenderer(string.Empty, Color.Red);
+        _defaultCellRenderer = new CellRenderer(default!, Color.White);
+
         foreach (var cellRenderer in cellRenderers)
         {
             _cellRenderers.Add(cellRenderer.State, cellRenderer);
@@ -30,7 +31,12 @@ internal class ConsoleRenderer
             for (var y = 0; y < height; y++)
             {
                 var cell = board[x, y];
-                _ = _cellRenderers.TryGetValue(cell.State, out var renderer);
+                var renderer = _defaultCellRenderer;
+
+                foreach(var (attribute, _) in cell.CellState)
+                {
+                    if (_cellRenderers.TryGetValue(attribute, out renderer)) break;
+                }
 
                 canvas.SetPixel(x, y, renderer?.Color ?? _defaultCellRenderer.Color);
             }
